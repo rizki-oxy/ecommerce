@@ -33,8 +33,14 @@ class MainController extends Controller
         $mains = Main::whereHas('store', function($query) use ($userId) {
             $query->where('user_id', $userId);
          })-> with('category', 'store')->get();
-        //$mains = Main::with('category', 'store')->get();
-        return view('admin.index', compact('mains'));
+
+        //hitung total qty berdasarkan category produk
+        $totalProduk = $mains->where('category.kategori', 'Produk')->sum('qty');
+
+        //hitung total qty berdasarkan category layanan
+        $totalLayanan = $mains->where('category.kategori', 'Layanan')->sum('qty');
+
+        return view('admin.index', compact('mains', 'totalProduk', 'totalLayanan'));
     }
 
 
@@ -62,7 +68,11 @@ class MainController extends Controller
         'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
 
-    //$userId = Auth::id();
+    //jika kategory bernilai layanan, maka set qty menjadi 1
+    $category = Category::find($request->input('category_id'));
+    if($category && $category->kategori === 'Layanan') {
+        $request->merge(['qty' => 1]);
+    }
 
     // Jika ada file yang diupload
     if ($request->hasFile('foto')) {
@@ -119,6 +129,12 @@ class MainController extends Controller
     $request->validate([
         'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
+
+    // Jika kategori layanan, set qty menjadi 1
+    $category = Category::find($request->input('category_id'));
+    if ($category && $category->kategori === 'Layanan') {
+        $request->merge(['qty' => 1]);
+    }
 
     //jika ada file foto baru yang diupload
     if ($request->hasFile('foto')) {

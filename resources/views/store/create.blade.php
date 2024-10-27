@@ -51,6 +51,10 @@
                             <label for="alamat_lengkap">Alamat Lengkap</label>
                             <input type="text" name="alamat_lengkap" id="alamat_lengkap" class="form-control" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="no_wa">Nomor WhatsApp Toko</label>
+                            <input type="text" name="no_wa" id="no_wa" class="form-control" required>
+                        </div>
 
                         <button type="submit" class="btn btn-primary">Daftar</button>
 

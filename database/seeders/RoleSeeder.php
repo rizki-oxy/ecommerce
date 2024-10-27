@@ -22,7 +22,10 @@ class RoleSeeder extends Seeder
             ],
             [
                 'role' => 'User'
-            ]
+            ],
+            [
+                'role' => 'Pending...'
+            ],
         ];
 
         foreach ($roles as $role){

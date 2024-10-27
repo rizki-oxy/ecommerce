@@ -4,9 +4,11 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
+    <!-- <section id="hero" class="hero section dark-background"> -->
+    <section id="hero" class="hero section">
 
-      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg" data-aos="fade-in">
+      <!-- <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg" data-aos="fade-in"> -->
+      <img src="assets/img/hero.png" alt="" class="hero-bg" data-aos="fade-in">
 
       <div class="container">
         <div class="row gy-4 d-flex justify-content-between" style="padding-bottom: 3rem">
@@ -91,7 +93,7 @@
     </section><!-- /Hero Section -->
 
     <!-- Featured Services Section -->
-    <section id="featured-services" class="featured-services section">
+    <section id="featured-services" class="featured-services section dark-background">
 
       <div class="container">
 
@@ -132,7 +134,7 @@
     </section><!-- /Featured Services Section -->
 
     <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="about" class="about section ">
 
       <div class="container">
 
@@ -146,7 +148,7 @@
           <div class="col-lg-6 content order-last  order-lg-first" data-aos="fade-up" data-aos-delay="100">
             <h3>Apa itu Tovo?</h3>
             <p>
-              Tovo adalah sebuah platform yang mewadahi alumni pelatihan BPVP untuk menjual dan mempromosikan barang atau layanan yang alumni miliki. 
+              Tovo adalah sebuah platform yang mewadahi alumni pelatihan BPVP untuk menjual dan mempromosikan barang atau layanan yang alumni miliki.
             </p>
             <ul>
               <li>
@@ -181,7 +183,6 @@
 
     <!-- Services Section -->
     <section id="products" class="products section dark-background">
-
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <span>Favorite Products<br></span>

@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegistController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\TransactionController;
 
 Route::resource('admin', MainController::class)->middleware('auth');
 
@@ -86,3 +88,10 @@ Route::get('/home-store/filter', [MainController::class, 'filter'])->name('store
 
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
 
+Route::post('/transaction/store', [TransactionController::class, 'store'])
+    ->name('transaction.store')
+    ->middleware('auth'); // Pastikan pengguna terautentikasi
+
+
+//order / checkout
+Route::get('/order', [OrderController::class, 'index']);

@@ -38,6 +38,7 @@ class StoreController extends Controller
             'nama_toko' => 'required|string',
             'alamat_kota' => 'required|string',
             'alamat_lengkap' => 'required|string',
+            'no_wa' => 'required|string'
         ]);
 
         //mendapatkan user_id dari user yagn sedang login
@@ -48,6 +49,7 @@ class StoreController extends Controller
             'nama_toko' => $request->input('nama_toko'),
             'alamat_kota' => $request->input('alamat_kota'),
             'alamat_lengkap' => $request->input('alamat_lengkap'),
+            'no_wa' => $request->input('no_wa'),
             'user_id' => $userId,
         ]);
 

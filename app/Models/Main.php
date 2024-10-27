@@ -14,6 +14,7 @@ class Main extends Model
        'harga',
        'diskon',
        'promo',
+       'qty',
        'deskripsi',
        'category_id',
        'store_id',
@@ -31,6 +32,10 @@ class Main extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function transaction(){
+        return $this->hasMany(Transaction::class);
     }
 
 

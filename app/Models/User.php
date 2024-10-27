@@ -26,6 +26,7 @@ class User extends Authenticatable
         'alamat',
         'lulusan_bpvp',
         'email',
+        'no_wa',
         'password',
         'role_id',
         'foto_profil',
@@ -43,6 +44,10 @@ class User extends Authenticatable
 
     public function store(){
         return $this->hasMany(Store::class);
+    }
+
+    public function transaction(){
+        return $this->hasMany(Transaction::class);
     }
 
     /**

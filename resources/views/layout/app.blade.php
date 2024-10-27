@@ -57,13 +57,14 @@
 
           @auth
               @if (auth()->user()->role_id == 1)
-              <li class="dropdown"><a href="#"><span>Data SuperAdmin</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <li><a href="/user"><span>Dasboard Admin</span>
+              {{-- <li class="dropdown"><a href="#"><span>Dasboard Admin</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                   <li><a href="/user">Data User</a></li>
-                  <!-- <li><a href="#">Data Kategori</a></li>
-                  <li><a href="#">Data Toko</a></li> -->
+                  <li><a href="#">Data Kategori</a></li>
+                  <li><a href="#">Data Toko</a></li>
                 </ul>
-              </li>
+              </li> --}}
               @endif
           @endauth
 
@@ -116,7 +117,7 @@
                 <a class="nav-link" href="/login"><i class="bi bi-person-lock"></i>Login</a>
             </li>
             @endauth
-        </ul>
+          </ul>
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

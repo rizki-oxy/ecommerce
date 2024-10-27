@@ -58,6 +58,22 @@
                 <label for="exampleFormControlInput1" class="form-label">Diskon</label>
                 <input class="form-control" type="number" name="diskon" placeholder="20" aria-label="default input example">
             </div>
+            
+            <div class="mb-3">
+                <label for="kategori" class="form-label">Kategori</label>
+                <select class="form-select form-select-sm mb-3" name="category_id" aria-label="Small select example">
+                    <option value="">Pilih Kategori</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->kategori }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Jumlah Barang Tersedia</label>
+                <input class="form-control" type="number" name="qty" placeholder="20" aria-label="default input example">
+            </div>
+
 
             <div class="mb-3">
                 <label for="kategori" class="form-label">Nama Toko</label>
@@ -65,16 +81,6 @@
                     <option value="">Pilih Toko</option>
                     @foreach ($stores as $store)
                         <option value="{{ $store->id }}">{{ $store->nama_toko }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label for="kategori" class="form-label">Kategori</label>
-                <select class="form-select form-select-sm mb-3" name="category_id" aria-label="Small select example">
-                    <option value="">Pilih Kategori</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->kategori }}</option>
                     @endforeach
                 </select>
             </div>

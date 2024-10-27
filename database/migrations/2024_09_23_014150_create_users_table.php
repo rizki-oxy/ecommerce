@@ -29,6 +29,7 @@ return new class extends Migration
                 ->onDelete('cascade');
 
             $table->string('foto_profil')->nullable();
+            $table->string('no_wa')->nullable();
 
             $table->rememberToken();
             $table->timestamps();

@@ -60,6 +60,10 @@
                             <input type="email" name="email" id="email" class="form-control" required>
                         </div>
                         <div class="mb-3">
+                            <label for="no_Wa">Nomor WhatsApp</label>
+                            <input type="text" name="no_wa" id="no_wa" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="password">Password</label>
                             <input type="password" name="password" id="password" class="form-control" required>
                         </div>
@@ -75,7 +79,9 @@
                             <select class="form-select form-select-sm mb-3" name="role_id" aria-label="Small select example">
                                 <option value="">Pilih Posisi</option>
                                 @foreach ($roles as $role)
-                                    <option value="{{$role->id}}">{{$role->role}}</option>
+                                    @if ($role->id == 1 || $role->id == 2 || $role->id == 3)
+                                        <option value="{{$role->id}}">{{$role->role}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             @else

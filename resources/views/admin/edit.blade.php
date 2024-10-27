@@ -55,24 +55,29 @@
             </div>
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Toko</label>
-                <select class="form-select form-select-sm mb-3" name="store_id" aria-label="Small select example">
-                    <option value="" selected>Pilih Toko</option>
-                    @foreach ($stores as $store)
-                        <option value="{{ $store->id }}" {{ $store->id == old('store_id', $main->store_id) ? 'selected' : '' }}>
-                            {{ $store->nama_toko }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="mb-3">
                 <label for="kategori" class="form-label">Kategori</label>
                 <select class="form-select form-select-sm mb-3" name="category_id" aria-label="Small select example">
                     <option value="">Pilih Kategori</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ $category->id == old('category_id', $main->category_id) ? 'selected' : '' }}>
                             {{ $category->kategori }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Jumlah Barang Tersedia</label>
+                <input class="form-control" type="number" name="qty" value="{{ old('qty', $main->qty) }}" placeholder="20" aria-label="default input example">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Toko</label>
+                <select class="form-select form-select-sm mb-3" name="store_id" aria-label="Small select example">
+                    <option value="" selected>Pilih Toko</option>
+                    @foreach ($stores as $store)
+                        <option value="{{ $store->id }}" {{ $store->id == old('store_id', $main->store_id) ? 'selected' : '' }}>
+                            {{ $store->nama_toko }}
                         </option>
                     @endforeach
                 </select>

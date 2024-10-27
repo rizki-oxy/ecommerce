@@ -48,7 +48,23 @@
                                     <div class="course-content">
                                         <h3><a href="{{ route('detail.store', $main->id) }}">{{$main->nama_barang}}</a></h3>
                                         <div class="d-flex justify-content-between align-items-center mb-3">
-                                            <p class="price">{{$main->harga}}</p>
+                                            @if ($main->diskon > 0)
+                                                <!-- Hitung harga diskon -->
+                                                @php
+                                                    $hargaDiskon = $main->harga - ($main->harga * $main->diskon / 100);
+                                                @endphp
+                                                <!-- Tampilkan harga setelah diskon -->
+                                                <p class="price text-danger">
+                                                    <b>Rp. {{ number_format($hargaDiskon, 0, ',', '.') }}</b>
+                                                </p>
+                                                <!-- Tampilkan harga asli yang dicoret -->
+                                                <del style="color: grey; font-size: 14px;">
+                                                    Rp. {{ number_format($main->harga, 0, ',', '.') }}
+                                                </del>
+                                            @else
+                                                <!-- Jika tidak ada diskon, tampilkan harga asli -->
+                                                <p class="price"><b>Rp. {{ number_format($main->harga, 0, ',', '.') }}</b></p>
+                                            @endif
                                             <p class="category">{{$main->promo}}</p>
                                         </div>
                                         <a href="https://wa.me/6282183854660?text={{ urlencode('Halo! Saya ingin check out produk '.$main->nama_barang.' dengan harga Rp'.$main->harga) }}" target="_blank" class="btn btn-primary w-100">Check Out</a>

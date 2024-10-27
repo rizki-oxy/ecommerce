@@ -58,10 +58,23 @@ class RegistController extends Controller
 
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
-        return view('superadmin.index', compact('users'));
+        $totalAdmin = User::where('role_id', 1)->count();  // Hitung total user dengan role_id = 1 (Admin)
+        $totalAlumni = User::where('role_id', 2)->count(); // Hitung total user dengan role_id = 2 (Alumni)
+        $totalUsers = User::where('role_id', 3)->count();
+        $totalPendingAlumni = User::where('role_id', 4)->count(); // Menghitung alumni yang menunggu approval
+        $totalKeseluruhan = $totalAdmin + $totalAlumni + $totalUsers + $totalPendingAlumni;
+
+        $role = $request->input('role');
+        if($role){
+            $users = User::where('role_id', $role)->get();
+        } else {
+            $users = User::all();
+        }
+        //$users = User::all();
+
+        return view('superadmin.index', compact('users', 'totalAdmin', 'totalAlumni', 'totalUsers','totalPendingAlumni','totalKeseluruhan', 'role'));
     }
 
     public function showRegistrationForm()
@@ -83,9 +96,16 @@ class RegistController extends Controller
         'alamat' => 'required|string',
         'lulusan_bpvp' => 'nullable|string',
         'email' => 'required|string|email|max:255|unique:users',
+        'no_wa' => 'nullable|string',
         'password' => 'required|string|confirmed|min:8',
         'role' => 'nullable|string',
     ]);
+    //tentukan role id
+    $roleId = $request->role_id;
+    //jika user mendaftar sebagai alumni, set role_id ke 4 (pending)
+    if ($roleId == 2){
+        $roleId = 4;
+    }
 
     User::create([
         'nama_lengkap' => $request->nama_lengkap,
@@ -95,8 +115,9 @@ class RegistController extends Controller
         'alamat' => $request->alamat,
         'lulusan_bpvp' => $request->lulusan_bpvp,
         'email' => $request->email,
+        'no_wa' => $request->no_wa,
         'password' => Hash::make($request->password),
-        'role_id' => $request->role_id ?? 'user', // Set role dari form atau default 'user'
+        'role_id' => $roleId,
     ]);
 
     return redirect()->route('login')->with('success', 'Akun berhasil dibuat. Silakan login.');
