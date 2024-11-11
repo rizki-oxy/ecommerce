@@ -13,7 +13,7 @@
         </ol>
       </nav>
     </div>
-  </div><!-- End Page Title -->
+</div><!-- End Page Title -->
 
 <div class="container my-5">
     <div class="row justify-content-center">

@@ -172,12 +172,12 @@ class MainController extends Controller
 
     //search cari
     public function search(Request $request)
-{
-    $query = $request->input('query');
-    $mains = Main::where('nama_barang', 'LIKE', "%$query%")->get(); // Misalkan Anda mencari produk berdasarkan nama
+    {
+        $query = $request->input('query');
+        $mains = Main::where('nama_barang', 'LIKE', "%$query%")->get(); // Misalkan Anda mencari produk berdasarkan nama
 
-    return view('store.searchresult', compact('mains'));
-}
+        return view('store.searchresult', compact('mains'));
+    }
 
     // filter
     public function filter(Request $request)

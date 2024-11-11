@@ -27,13 +27,13 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+        @endif
 
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
 
     <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -58,7 +58,7 @@
                 <label for="exampleFormControlInput1" class="form-label">Diskon</label>
                 <input class="form-control" type="number" name="diskon" placeholder="20" aria-label="default input example">
             </div>
-            
+
             <div class="mb-3">
                 <label for="kategori" class="form-label">Kategori</label>
                 <select class="form-select form-select-sm mb-3" name="category_id" aria-label="Small select example">
